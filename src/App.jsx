@@ -8,8 +8,7 @@ import Home from './pages/home/Home.jsx'
 import Mocktails from "./pages/mocktails/Mocktails.jsx";
 import MyAccount from "./pages/myaccount/MyAccount.jsx";
 import SurpriseMe from "./pages/surpriseme/SurpriseMe.jsx";
-import NavigationPrimary from "./constants/navigationPrimary/NavigationPrimary.jsx";
-import NavigationSecondary from "./constants/navigationSecondary/NavigationSecondary.jsx";
+import NavigationPrimary from "./components/navigationPrimary/NavigationPrimary.jsx";
 
 
 function App() {
@@ -17,33 +16,25 @@ function App() {
   return (
     <>
         <section>
-            <NavigationSecondary>
-                <ul>
-                    <li><NavLink to="/favorites">Favorieten</NavLink></li>
-                    <li><NavLink to="/myaccount">Mijn account</NavLink></li>
-                </ul>
-            </NavigationSecondary>
-            <Routes>
-                <Route path="/favorites" element={<Favorites/>}/>
-                <Route path="/myaccount" element={<MyAccount/>}/>
-            </Routes>
+            <div>
+            <span>
+                    <NavigationPrimary>
+                        <ul>
+                            <li><NavLink to="/">Home</NavLink></li>
+                            <li><NavLink to="/cocktails">Cocktails</NavLink></li>
+                            <li><NavLink to="/mocktails">Mocktails</NavLink></li>
+                            <li><NavLink to="/surpriseme">Verras me!</NavLink></li>
+                        </ul>
+                    </NavigationPrimary>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/cocktails" element={<Cocktails/>}/>
+                        <Route path="/mocktails" element={<Mocktails/>}/>
+                        <Route path="/surpriseme" element={<SurpriseMe/>}/>
+                    </Routes>
+                </span>
+            </div>
         </section>
-        <div>
-            <NavigationPrimary>
-                <ul>
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/cocktails">Cocktails</NavLink></li>
-                    <li><NavLink to="/mocktails">Mocktails</NavLink></li>
-                    <li><NavLink to="/surpriseme">Verras me!</NavLink></li>
-                </ul>
-            </NavigationPrimary>
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/cocktails" element={<Cocktails/>}/>
-                <Route path="/mocktails" element={<Mocktails/>}/>
-                <Route path="/surpriseme" element={<SurpriseMe/>}/>
-            </Routes>
-        </div>
     </>
   )
 }
